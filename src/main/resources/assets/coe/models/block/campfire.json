@@ -1,29 +1,23 @@
 {
+	"credit": "Made with Blockbench by calebrudolph",
 	"textures": {
 		"stone": "blocks/stone",
 		"wood": "blocks/log_big_oak"
 	},
-	"credit": "Made with Blockbench by calebrudolph, uv maps done by Mewr11",
 	"elements": [
 		{
 			"name": "Stone 5",
-			"from": [13, 0, 6],
-			"to": [15, 1, 10],
+			"from": [14, 0, 6],
+			"to": [16, 1, 10],
 			"rotation": {
 				"angle": 0,
 				"axis": "y",
-				"origin": [14, 0.5, 8]
+				"origin": [15, 0.5, 8]
 			},
 			"faces": {
-				"north": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 4, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 4, 1], "texture": "#stone"},
 				"up": {"uv": [0, 0, 2, 4], "texture": "#stone"},
 				"down": {"uv": [0, 0, 2, 4], "texture": "#stone"}
@@ -31,23 +25,17 @@
 		},
 		{
 			"name": "Stone 4",
-			"from": [1, 0, 6],
-			"to": [3, 1, 10],
+			"from": [0, 0, 6],
+			"to": [2, 1, 10],
 			"rotation": {
 				"angle": 0,
 				"axis": "y",
-				"origin": [2, 0.5, 7.5]
+				"origin": [1, 0.5, 7.5]
 			},
 			"faces": {
-				"north": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 4, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 4, 1], "texture": "#stone"},
 				"up": {"uv": [0, 0, 2, 4], "texture": "#stone"},
 				"down": {"uv": [0, 0, 2, 4], "texture": "#stone"}
@@ -55,23 +43,17 @@
 		},
 		{
 			"name": "Stone 3",
-			"from": [11, 0, 3],
-			"to": [13, 1, 5],
+			"from": [12, 0, 2],
+			"to": [14, 1, 4],
 			"rotation": {
 				"angle": -22.5,
 				"axis": "y",
-				"origin": [12, 0.5, 4]
+				"origin": [13, 0.5, 3]
 			},
 			"faces": {
-				"north": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 2, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"up": {"uv": [0, 0, 2, 2], "texture": "#stone"},
 				"down": {"uv": [0, 0, 2, 2], "texture": "#stone"}
@@ -79,18 +61,12 @@
 		},
 		{
 			"name": "Stone 2",
-			"from": [6, 0, 1],
-			"to": [10, 1, 3],
+			"from": [6, 0, 0],
+			"to": [10, 1, 2],
 			"faces": {
-				"north": {
-					"uv": [0, 0, 4, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 4, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 2, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 4, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 4, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"up": {"uv": [0, 0, 4, 2], "texture": "#stone"},
 				"down": {"uv": [0, 0, 4, 2], "texture": "#stone"}
@@ -98,23 +74,17 @@
 		},
 		{
 			"name": "Stone 1",
-			"from": [3, 0, 3],
-			"to": [6, 1, 5],
+			"from": [2, 0, 2],
+			"to": [5, 1, 4],
 			"rotation": {
 				"angle": 22.5,
 				"axis": "y",
-				"origin": [4.5, 0.5, 4]
+				"origin": [3.5, 0.5, 3]
 			},
 			"faces": {
-				"north": {
-					"uv": [0, 0, 3, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 3, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 2, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 3, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 3, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"up": {"uv": [0, 0, 3, 2], "texture": "#stone"},
 				"down": {"uv": [0, 0, 3, 2], "texture": "#stone"}
@@ -122,23 +92,17 @@
 		},
 		{
 			"name": "Stone 3b",
-			"from": [4, 0, 11],
-			"to": [6, 1, 13],
+			"from": [3, 0, 12],
+			"to": [5, 1, 14],
 			"rotation": {
 				"angle": -22.5,
 				"axis": "y",
-				"origin": [5, 0.5, 12]
+				"origin": [4, 0.5, 13]
 			},
 			"faces": {
-				"north": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 2, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 2, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"up": {
 					"uv": [0, 0, 2, 2],
@@ -154,18 +118,12 @@
 		},
 		{
 			"name": "Stone 2b",
-			"from": [7, 0, 13],
-			"to": [11, 1, 15],
+			"from": [7, 0, 14],
+			"to": [11, 1, 16],
 			"faces": {
-				"north": {
-					"uv": [0, 0, 4, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 4, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 2, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 4, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 4, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"up": {
 					"uv": [0, 0, 4, 2],
@@ -181,23 +139,17 @@
 		},
 		{
 			"name": "Stone 1b",
-			"from": [11, 0, 11],
-			"to": [14, 1, 13],
+			"from": [12, 0, 12],
+			"to": [15, 1, 14],
 			"rotation": {
 				"angle": 22.5,
 				"axis": "y",
-				"origin": [12.5, 0.5, 12]
+				"origin": [13.5, 0.5, 13]
 			},
 			"faces": {
-				"north": {
-					"uv": [0, 0, 3, 1],
-					"texture": "#stone"
-				},
+				"north": {"uv": [0, 0, 3, 1], "texture": "#stone"},
 				"east": {"uv": [0, 0, 2, 1], "texture": "#stone"},
-				"south": {
-					"uv": [0, 0, 3, 1],
-					"texture": "#stone"
-				},
+				"south": {"uv": [0, 0, 3, 1], "texture": "#stone"},
 				"west": {"uv": [0, 0, 2, 1], "texture": "#stone"},
 				"up": {
 					"uv": [0, 0, 3, 2],
@@ -213,12 +165,12 @@
 		},
 		{
 			"name": "Log 3",
-			"from": [7, 0, 5],
-			"to": [9, 6, 7],
+			"from": [7, 0, 3],
+			"to": [9, 11, 5],
 			"rotation": {
 				"angle": 22.5,
 				"axis": "x",
-				"origin": [8, 3, 6]
+				"origin": [8, 3, 4]
 			},
 			"faces": {
 				"north": {
@@ -231,10 +183,7 @@
 					"texture": "#wood",
 					"rotation": 90
 				},
-				"south": {
-					"uv": [0, 0, 2, 6],
-					"texture": "#wood"
-				},
+				"south": {"uv": [0, 0, 2, 6], "texture": "#wood"},
 				"west": {
 					"uv": [0, 0, 6, 2],
 					"texture": "#wood",
@@ -250,12 +199,12 @@
 		},
 		{
 			"name": "Log 2",
-			"from": [7, 0, 9],
-			"to": [9, 6, 11],
+			"from": [7, 0, 11],
+			"to": [9, 12, 13],
 			"rotation": {
 				"angle": -22.5,
 				"axis": "x",
-				"origin": [8, 3, 10]
+				"origin": [8, 3, 12]
 			},
 			"faces": {
 				"north": {
@@ -268,10 +217,7 @@
 					"texture": "#wood",
 					"rotation": 270
 				},
-				"south": {
-					"uv": [0, 0, 2, 6],
-					"texture": "#wood"
-				},
+				"south": {"uv": [0, 0, 2, 6], "texture": "#wood"},
 				"west": {
 					"uv": [0, 0, 6, 2],
 					"texture": "#wood",
@@ -287,12 +233,12 @@
 		},
 		{
 			"name": "Log 4",
-			"from": [10, 0, 7],
-			"to": [12, 6, 9],
+			"from": [11, 0, 7],
+			"to": [13, 9, 9],
 			"rotation": {
 				"angle": 22.5,
 				"axis": "z",
-				"origin": [11, 3, 8]
+				"origin": [12, 3, 8]
 			},
 			"faces": {
 				"north": {
@@ -330,7 +276,7 @@
 		{
 			"name": "Log 1",
 			"from": [4, 0, 7],
-			"to": [6, 6, 9],
+			"to": [6, 8, 9],
 			"rotation": {
 				"angle": -22.5,
 				"axis": "z",
