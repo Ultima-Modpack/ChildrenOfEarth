@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench by calebrudolph",
 	"textures": {
 		"stone": "blocks/stone",
-		"wood": "blocks/log_big_oak"
+		"wood": "blocks/log_big_oak",
+		"particle": "blocks/log_big_oak"
 	},
 	"elements": [
 		{
