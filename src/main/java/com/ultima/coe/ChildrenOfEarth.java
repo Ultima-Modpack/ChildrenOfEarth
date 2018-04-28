@@ -40,6 +40,11 @@ public class ChildrenOfEarth {
 		}
 		
 		@SubscribeEvent
+		public static void registerBlocks(RegistryEvent.Register<Block> event) {
+			RegisterBlock.register(event.getRegistry());
+		}
+		
+		@SubscribeEvent
 		public static void registerItems(ModelRegistryEvent event) {
 			RegisterItem.registerModels();
 			RegisterBlock.registerModels();
