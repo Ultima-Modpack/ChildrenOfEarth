@@ -1,6 +1,7 @@
 package com.ultima.coe.proxy;
 
 import com.ultima.coe.Reference;
+import com.ultima.coe.block.RegisterBlock;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -22,7 +23,7 @@ public class ClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
-    	//ModBlocks.initModels();
+    	RegisterBlock.registerModels();
     	//ModItems.initModels();
     }
     
