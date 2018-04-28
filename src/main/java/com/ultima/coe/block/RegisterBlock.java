@@ -1,6 +1,6 @@
 package com.ultima.coe.block;
 
-import com.ultima.coe.block.campfire.CampfireBlock;
+import com.ultima.coe.block.basic.campfire.CampfireBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

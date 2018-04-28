@@ -1,4 +1,4 @@
-package com.ultima.coe.block.campfire;
+package com.ultima.coe.block.basic.campfire;
 
 import com.ultima.coe.block.BlockBase;
 

@@ -19,6 +19,7 @@ public class BlockBase extends Block{
 		
 		setUnlocalizedName(name);
 		setRegistryName(name);
+		setCreativeTab(ChildrenOfEarth.creativeTab);
 	}
 	
 	public void registerItemModel(Item itemBlock) {
