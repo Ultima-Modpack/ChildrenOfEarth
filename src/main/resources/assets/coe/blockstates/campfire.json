@@ -1,0 +1,12 @@
+{
+	"forge_marker":1,
+	"variants": {
+		"normal": {
+			"model": "coe:campfire"
+		},
+		"inventory": {
+			"model": "coe:campfire",
+			"transform": "forge:default-block"
+		}
+	}
+}
