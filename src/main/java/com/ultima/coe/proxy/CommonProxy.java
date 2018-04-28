@@ -1,5 +1,7 @@
 package com.ultima.coe.proxy;
 
+import com.ultima.coe.block.RegisterBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
