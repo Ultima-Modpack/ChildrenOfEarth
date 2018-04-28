@@ -1,5 +1,6 @@
-package com.ultima.coe;
+package com.ultima.coe.common;
 
+import com.ultima.coe.Reference;
 import com.ultima.coe.block.RegisterBlock;
 
 import net.minecraft.creativetab.CreativeTabs;

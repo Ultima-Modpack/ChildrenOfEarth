@@ -21,11 +21,13 @@ public class ClientProxy extends CommonProxy {
         super.preInit(e);
     }
 
+    /*
     @SubscribeEvent
     public static void registerModels(ModelRegistryEvent event) {
     	RegisterBlock.registerModels();
     	//ModItems.initModels();
     }
+    */
     
     @Override
     public void registerItemRenderer(Item item, int meta, String id) {

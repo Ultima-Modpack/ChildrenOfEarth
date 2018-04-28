@@ -3,6 +3,7 @@ package com.ultima.coe;
 import java.util.logging.Logger;
 
 import com.ultima.coe.block.RegisterBlock;
+import com.ultima.coe.common.COETab;
 import com.ultima.coe.item.RegisterItem;
 import com.ultima.coe.proxy.CommonProxy;
 
@@ -33,20 +34,17 @@ public class ChildrenOfEarth {
 	public static class RegistrationHandler {
 		
 		@SubscribeEvent
-		public static void registerBlocks(RegistryEvent.Register<Block> event) {
-			RegisterBlock.register(event.getRegistry());
-		}
-		
-		@SubscribeEvent
 		public static void registerItems(RegistryEvent.Register<Item> event) {
 			RegisterItem.register(event.getRegistry());
+			RegisterBlock.registerItemBlocks(event.getRegistry());
 		}
 		
 		@SubscribeEvent
-		public static void registerModels(ModelRegistryEvent event) {
-			RegisterBlock.registerModels();
+		public static void registerItems(ModelRegistryEvent event) {
 			RegisterItem.registerModels();
+			RegisterBlock.registerModels();
 		}
+
 		
 	}
 	
