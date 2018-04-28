@@ -24,7 +24,6 @@ public class RegisterBlock {
 		);
 	}
 	
-	@SideOnly(Side.CLIENT)
 	public static void registerModels() {
 		campfire.registerItemModel(Item.getItemFromBlock(campfire));
 	}

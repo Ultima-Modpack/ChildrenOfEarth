@@ -44,7 +44,6 @@ public class ChildrenOfEarth {
 			RegisterItem.registerModels();
 			RegisterBlock.registerModels();
 		}
-
 		
 	}
 	
