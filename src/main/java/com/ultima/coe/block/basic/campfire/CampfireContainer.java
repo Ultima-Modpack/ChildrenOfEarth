@@ -18,7 +18,7 @@ public class CampfireContainer extends Container {
 		// First 4 slots
 		
 		// Fuel
-		addSlotToContainer(new SlotItemHandler(inventory, 0, 71, 53) {
+		addSlotToContainer(new SlotItemHandler(inventory, 0, 56, 53) {
 			@Override
 			public void onSlotChanged() {
 				campfire.markDirty();
@@ -26,7 +26,7 @@ public class CampfireContainer extends Container {
 		});
 		
 		// Starter
-		addSlotToContainer(new SlotItemHandler(inventory, 1, 50, 35) {
+		addSlotToContainer(new SlotItemHandler(inventory, 1, 35, 35) {
 			@Override
 			public void onSlotChanged() {
 				campfire.markDirty();
@@ -34,7 +34,7 @@ public class CampfireContainer extends Container {
 		});
 		
 		// Food
-		addSlotToContainer(new SlotItemHandler(inventory, 2, 71, 17) {
+		addSlotToContainer(new SlotItemHandler(inventory, 2, 56, 17) {
 			@Override
 			public void onSlotChanged() {
 				campfire.markDirty();
@@ -42,7 +42,7 @@ public class CampfireContainer extends Container {
 		});
 		
 		// Output
-		addSlotToContainer(new SlotItemHandler(inventory, 3, 107, 35) {
+		addSlotToContainer(new SlotItemHandler(inventory, 3, 116, 35) {
 			@Override
 			public void onSlotChanged() {
 				campfire.markDirty();
