@@ -1,0 +1,20 @@
+{
+	"type": "forge:ore_shaped",
+	"pattern": [
+		" S ",
+		"S S",
+		"PPP"
+	],
+	"key": {
+		"S": {
+			"type": "forge:ore_dict",
+			"ore": "stickWood"
+		},
+		"P": {
+			"item": "coe:pebble"
+		}
+	},
+	"result": {
+		"item": "coe:campfire"
+	}
+}

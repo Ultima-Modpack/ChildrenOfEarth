@@ -15,7 +15,7 @@ import net.minecraft.world.IBlockAccess;
 public class RockClumpBlock extends BlockBase{
 	
 	public RockClumpBlock() {
-		super(Material.ROCK, "rockclump");
+		super(Material.GROUND, "rockclump");
 	}
 
 	@Override
