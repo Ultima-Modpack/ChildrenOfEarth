@@ -26,8 +26,24 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	
 	@Override
 	public void update() {
-		if(inventory.getStackInSlot(2) != ItemStack.EMPTY) {}
+		
 	
+	}
+	
+	//Returns True if the item can be smelt
+	private boolean isStarter(){
+		boolean flag = false;
+		return flag;
+	}
+	
+	private boolean  isFuel() {
+		boolean flag = false;
+		return flag;
+	}
+	
+	private boolean  isFood() {
+		boolean flag = false;
+		return flag;
 	}
 	
 	@Override

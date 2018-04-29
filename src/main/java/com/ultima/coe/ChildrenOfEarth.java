@@ -7,6 +7,7 @@ import com.ultima.coe.common.RegisterBlock;
 import com.ultima.coe.common.RegisterGui;
 import com.ultima.coe.common.RegisterItem;
 import com.ultima.coe.proxy.CommonProxy;
+import com.ultima.coe.recipies.RegisterRecipe;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -63,6 +64,7 @@ public class ChildrenOfEarth {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
+		RegisterRecipe.init();
 	}
 
 	@Mod.EventHandler
