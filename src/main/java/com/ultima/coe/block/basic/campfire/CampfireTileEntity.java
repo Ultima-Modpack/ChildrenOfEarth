@@ -38,12 +38,22 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	
 	private boolean  isFuel() {
 		boolean flag = false;
+		if(inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:stick") ||
+		   inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:log") ||
+		   inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:log2") ||
+		   inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:planks")) {
+			flag = true;
+		}
 		return flag;
 	}
 	
 	private boolean  isFood() {
 		boolean flag = false;
 		return flag;
+	}
+	
+	private boolean canSmelt() {
+		return false;
 	}
 	
 	@Override
