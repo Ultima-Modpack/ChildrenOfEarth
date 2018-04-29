@@ -1,5 +1,5 @@
 {
-	"credit": "Made with Blockbench by calebrudolph, uv mapping by Mewr11",
+	"credit": "Made with Blockbench by calebrudolph",
 	"textures": {
 		"wood": "blocks/log_oak",
 		"particle": "blocks/log_oak"
@@ -7,57 +7,64 @@
 	"elements": [
 		{
 			"name": "cube",
-			"from": [5, 0, 1],
-			"to": [7, 2, 15],
+			"from": [0, 0, 8],
+			"to": [14, 2, 10],
 			"rotation": {
 				"angle": -22.5,
 				"axis": "y",
-				"origin": [6, 1, 8]
+				"origin": [7, 1, 9]
 			},
 			"faces": {
-				"north": {
-					"uv": [0, 0, 2, 2],
-					"texture": "#wood"
+				"north": {"uv": [0, 0, 14, 2], "texture": "#wood"},
+				"east": {"uv": [0, 0, 2, 2], "texture": "#wood"},
+				"south": {"uv": [0, 0, 14, 2], "texture": "#wood"},
+				"west": {"uv": [0, 0, 2, 2], "texture": "#wood"},
+				"up": {
+					"uv": [0, 0, 2, 14],
+					"texture": "#wood",
+					"rotation": 90
 				},
-				"east": {
-					"uv": [0, 0, 14, 2],
-					"texture": "#wood"
-				},
-				"south": {
-					"uv": [0, 0, 2, 2],
-					"texture": "#wood"
-				},
-				"west": {
-					"uv": [0, 0, 14, 2],
-					"texture": "#wood"
-				},
-				"up": {"uv": [0, 0, 2, 14], "texture": "#wood"},
-				"down": {"uv": [0, 0, 2, 14], "texture": "#wood"}
+				"down": {
+					"uv": [0, 0, 2, 14],
+					"texture": "#wood",
+					"rotation": 270
+				}
 			}
 		},
 		{
 			"name": "cube",
-			"from": [6, 0, 7],
-			"to": [11, 2, 9],
+			"from": [6, 0, 9],
+			"to": [8, 2, 14],
 			"rotation": {
 				"angle": 22.5,
 				"axis": "y",
-				"origin": [7.5, 1, 8]
+				"origin": [7, 1, 10.5]
 			},
 			"faces": {
-				"north": {
+				"north": {"uv": [0, 0, 2, 2], "texture": "#wood"},
+				"east": {"uv": [0, 0, 5, 2], "texture": "#wood"},
+				"south": {"uv": [0, 0, 2, 2], "texture": "#wood"},
+				"west": {"uv": [0, 0, 5, 2], "texture": "#wood"},
+				"up": {
 					"uv": [0, 0, 5, 2],
-					"texture": "#wood"
+					"texture": "#wood",
+					"rotation": 90
 				},
-				"east": {"uv": [0, 0, 2, 2], "texture": "#wood"},
-				"south": {
+				"down": {
 					"uv": [0, 0, 5, 2],
-					"texture": "#wood"
-				},
-				"west": {"uv": [0, 0, 2, 2], "texture": "#wood"},
-				"up": {"uv": [0, 0, 5, 2], "texture": "#wood"},
-				"down": {"uv": [0, 0, 5, 2], "texture": "#wood"}
+					"texture": "#wood",
+					"rotation": 270
+				}
 			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"isOpen": true,
+			"shade": true,
+			"display": {"visibility": true, "autouv": true},
+			"children": [0, 1]
 		}
 	]
 }

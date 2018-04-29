@@ -1,7 +1,7 @@
 {
 	"forge_marker": 1,
 	"variants": {
-		"normal": [{"model": "coe:branch1"}, {"model": "coe:branch2"}],
+		"normal": [{"model": "coe:branch1"}, {"model": "coe:branch2"}, {"model": "coe:branch3"}, {"model": "coe:branch4"}],
 		"inventory": {
 			"model": "coe:branch1",
 			"transform": "forge:default-block"
