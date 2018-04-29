@@ -20,7 +20,7 @@ public class RockClumpBlock extends BlockBase{
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getByNameOrId(Reference.MOD_ID + ":pebble");
+		return Item.getByNameOrId("coe:pebble");
 	}
 	
 	@Override
