@@ -1,0 +1,10 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"normal": [{"model": "coe:branch1"}, {"model": "coe:branch2"}],
+		"inventory": {
+			"model": "coe:branch1",
+			"transform": "forge:default-block"
+		}
+	}
+}
