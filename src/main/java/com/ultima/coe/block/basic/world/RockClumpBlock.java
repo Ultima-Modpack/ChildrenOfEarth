@@ -8,9 +8,12 @@ import com.ultima.coe.block.BlockBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 
 public class RockClumpBlock extends BlockBase{
-
+	
 	public RockClumpBlock() {
 		super(Material.ROCK, "rockclump");
 	}
@@ -31,4 +34,12 @@ public class RockClumpBlock extends BlockBase{
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
+	
+	@Override
+	@Deprecated
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+        return new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.5D, 0.5D, 0.5D);
+    }
 }
+
