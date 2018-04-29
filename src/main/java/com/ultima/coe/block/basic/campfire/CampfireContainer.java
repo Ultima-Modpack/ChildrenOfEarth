@@ -26,7 +26,7 @@ public class CampfireContainer extends Container {
 		});
 		
 		// Starter
-		addSlotToContainer(new SlotItemHandler(inventory, 1, 53, 35) {
+		addSlotToContainer(new SlotItemHandler(inventory, 1, 50, 35) {
 			@Override
 			public void onSlotChanged() {
 				campfire.markDirty();
