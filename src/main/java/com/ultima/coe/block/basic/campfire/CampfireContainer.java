@@ -57,7 +57,7 @@ public class CampfireContainer extends Container {
 		}
 		
 		// Player's hotbar
-		for(int k = 0; k < 3; k++) {
+		for(int k = 0; k < 9; k++) {
 			addSlotToContainer(new Slot(playerInv, k, 8 + k*18, 142));
 		}
 		
