@@ -1,0 +1,10 @@
+{
+	"forge_marker": 1,
+	"variants": {
+		"normal": [{"model": "coe:rockclump1"}, {"model": "coe:rockclump2"}, {"model": "rockclump3"}],
+		"inventory": {
+			"model": "coe:rockclump1",
+			"transform": "forge:default-block"
+		}
+	}
+}
