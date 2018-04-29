@@ -2,6 +2,8 @@
 
 # Blocks
 tile.campfire.name=Campfire
+tile.branch.name=Branch
+tile.rockclump.name=Rock Pile
 
 # UI
 itemGroup.coe=Children of Earth
