@@ -1,7 +1,12 @@
 {
 	"forge_marker": 1,
 	"variants": {
-		"normal": [{"model": "coe:branch1"}, {"model": "coe:branch2"}, {"model": "coe:branch3"}, {"model": "coe:branch4"}],
+		"normal": [
+			{"model": "coe:branch1", "y":0}, {"model": "coe:branch1", "y":90}, {"model": "coe:branch1", "y":180}, {"model": "coe:branch1", "y":270},
+			{"model": "coe:branch2", "y":0}, {"model": "coe:branch2", "y":90}, {"model": "coe:branch2", "y":180}, {"model": "coe:branch2", "y":270},
+			{"model": "coe:branch3", "y":0}, {"model": "coe:branch3", "y":90}, {"model": "coe:branch3", "y":180}, {"model": "coe:branch3", "y":270},
+			{"model": "coe:branch4", "y":0}, {"model": "coe:branch4", "y":90}, {"model": "coe:branch4", "y":180}, {"model": "coe:branch4", "y":270}
+		],
 		"inventory": {
 			"model": "coe:branch1",
 			"transform": "forge:default-block"
