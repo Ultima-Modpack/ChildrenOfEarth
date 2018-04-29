@@ -1,4 +1,4 @@
-package com.ultima.coe.item;
+package com.ultima.coe.common;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;

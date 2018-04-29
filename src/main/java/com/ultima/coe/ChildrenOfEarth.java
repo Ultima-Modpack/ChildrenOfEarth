@@ -2,9 +2,10 @@ package com.ultima.coe;
 
 import java.util.logging.Logger;
 
-import com.ultima.coe.block.RegisterBlock;
 import com.ultima.coe.common.COETab;
-import com.ultima.coe.item.RegisterItem;
+import com.ultima.coe.common.RegisterBlock;
+import com.ultima.coe.common.RegisterGui;
+import com.ultima.coe.common.RegisterItem;
 import com.ultima.coe.proxy.CommonProxy;
 
 import net.minecraft.block.Block;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
 public class ChildrenOfEarth {
@@ -55,6 +57,7 @@ public class ChildrenOfEarth {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		proxy.preInit(event);
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new RegisterGui());
 	}
 
 	@Mod.EventHandler

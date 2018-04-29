@@ -1,9 +1,10 @@
-package com.ultima.coe.block;
+package com.ultima.coe.common;
 
 import com.ultima.coe.block.basic.campfire.CampfireBlock;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class RegisterBlock {
@@ -14,6 +15,8 @@ public class RegisterBlock {
 		registry.registerAll(
 				campfire
 		);
+		
+		GameRegistry.registerTileEntity(campfire.getTileEntityClass(), campfire.getRegistryName().toString());
 	}
 	
 	public static void registerItemBlocks(IForgeRegistry<Item> registry) {
