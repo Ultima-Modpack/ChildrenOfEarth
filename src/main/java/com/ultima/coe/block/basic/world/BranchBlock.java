@@ -19,14 +19,7 @@ public class BranchBlock extends BlockBase {
 	}
 
 	@Override
-	public void breakBlock(World world, BlockPos pos, IBlockState state) {
-		ItemStack stack = new ItemStack(Item.getByNameOrId("minecraft:stick"));
-		world.spawnEntity(new EntityItem(world, pos.getX(), pos.getY(), pos.getZ(), stack));
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return Item.getByNameOrId("minecraft:stick");
 	}
-	
-	@Override
-    public int quantityDropped(Random random)
-    {
-        return 0;
-    }
 }
