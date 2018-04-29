@@ -1,5 +1,9 @@
 {
-	"credit": "Made with Blockbench by calebrudolph",
+	"credit": "Made with Blockbench by calebrudolph, uv mapping by Mewr11",
+	"textures": {
+		"wood": "blocks/log_oak",
+		"particle": "blocks/log_oak"
+	},
 	"elements": [
 		{
 			"name": "cube",
@@ -13,28 +17,28 @@
 			"faces": {
 				"north": {
 					"uv": [0, 0, 2, 2],
-					"texture": "#missing"
+					"texture": "#wood"
 				},
 				"east": {
 					"uv": [0, 0, 14, 2],
-					"texture": "#missing"
+					"texture": "#wood"
 				},
 				"south": {
 					"uv": [0, 0, 2, 2],
-					"texture": "#missing"
+					"texture": "#wood"
 				},
 				"west": {
 					"uv": [0, 0, 14, 2],
-					"texture": "#missing"
+					"texture": "#wood"
 				},
 				"up": {
 					"uv": [0, 0, 2, 14],
-					"texture": "#missing",
+					"texture": "#wood",
 					"rotation": 180
 				},
 				"down": {
 					"uv": [0, 0, 2, 14],
-					"texture": "#missing",
+					"texture": "#wood",
 					"rotation": 180
 				}
 			}
@@ -51,22 +55,22 @@
 			"faces": {
 				"north": {
 					"uv": [0, 0, 2, 2],
-					"texture": "#missing"
+					"texture": "#wood"
 				},
-				"east": {"uv": [0, 0, 5, 2], "texture": "#missing"},
+				"east": {"uv": [0, 0, 5, 2], "texture": "#wood"},
 				"south": {
 					"uv": [0, 0, 2, 2],
-					"texture": "#missing"
+					"texture": "#wood"
 				},
-				"west": {"uv": [0, 0, 5, 2], "texture": "#missing"},
+				"west": {"uv": [0, 0, 5, 2], "texture": "#wood"},
 				"up": {
 					"uv": [0, 0, 5, 2],
-					"texture": "#missing",
+					"texture": "#wood",
 					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 5, 2],
-					"texture": "#missing",
+					"texture": "#wood",
 					"rotation": 270
 				}
 			}
