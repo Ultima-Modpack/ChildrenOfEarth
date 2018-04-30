@@ -3,8 +3,8 @@ package com.ultima.coe.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ultima.coe.recipies.CampfireRecipe;
-import com.ultima.coe.recipies.CampfireStarter;
+import com.ultima.coe.recipies.campfire.CampfireRecipe;
+import com.ultima.coe.recipies.campfire.CampfireStarter;
 
 import net.minecraft.item.ItemStack;
 

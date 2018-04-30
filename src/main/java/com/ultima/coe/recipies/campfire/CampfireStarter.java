@@ -1,4 +1,4 @@
-package com.ultima.coe.recipies;
+package com.ultima.coe.recipies.campfire;
 
 import net.minecraft.item.ItemStack;
 

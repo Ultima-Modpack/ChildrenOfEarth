@@ -1,4 +1,4 @@
-package com.ultima.coe.recipies;
+package com.ultima.coe.recipies.campfire;
 
 import javax.annotation.Nullable;
 
