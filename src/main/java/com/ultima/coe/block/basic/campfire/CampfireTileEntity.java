@@ -28,7 +28,11 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	
 	@Override
 	public void update() {
-		
+		if(fire) {
+			if((fuel == 0) &&(!(isFuel() && isFood() && isSpace()))) {
+				fire = false;
+			}
+		}
 	
 	}
 	
@@ -63,9 +67,6 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 		return flag;
 	}
 	
-	private boolean canSmelt() {
-		return false;
-	}
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
