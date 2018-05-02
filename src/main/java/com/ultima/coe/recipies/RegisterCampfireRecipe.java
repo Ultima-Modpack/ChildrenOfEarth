@@ -1,11 +1,9 @@
 package com.ultima.coe.recipies;
 
-import com.ultima.coe.Reference;
 import com.ultima.coe.api.ChildrenOfEarthAPI;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RegisterCampfireRecipe {
 

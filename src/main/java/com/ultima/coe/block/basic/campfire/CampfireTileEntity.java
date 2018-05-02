@@ -6,7 +6,6 @@ import com.ultima.coe.api.ChildrenOfEarthAPI;
 import com.ultima.coe.recipies.campfire.CampfireRecipe;
 import com.ultima.coe.recipies.campfire.CampfireStarter;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
