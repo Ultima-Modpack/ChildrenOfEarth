@@ -34,33 +34,33 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	
 	//Returns True if the item can be smelt
 	private boolean isStarter(){
-		boolean flag = false;
-		
 		for(CampfireStarter cs: ChildrenOfEarthAPI.campfireStarters) {
-			flag |= cs.matches(inventory.getStackInSlot(1));
+			if(cs.matches(inventory.getStackInSlot(1))) {
+				return true;
+			}
 		}
 		
-		return flag;
+		return false;
 	}
 	
 	private boolean  isFuel() {
-		boolean flag = false;
-		
 		for(ItemStack is: ChildrenOfEarthAPI.campfireFuels) {
-			flag |= inventory.getStackInSlot(0).isItemEqual(is);
+			if(inventory.getStackInSlot(0).isItemEqual(is)) {
+				return true;
+			}
 		}
 		
-		return flag;
+		return false;
 	}
 	
 	private boolean  isFood() {
-		boolean flag = false;
-		
 		for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
-			flag |= cr.matches(inventory.getStackInSlot(2));
+			if(cr.matches(inventory.getStackInSlot(2))) {
+				return true;
+			}
 		}
 		
-		return flag;
+		return false;
 	}
 	
 	private boolean canSmelt() {
