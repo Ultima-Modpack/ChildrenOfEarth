@@ -55,6 +55,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 			progress++;
 			fuel--;
 			if(progress == 200) {
+				progress = 0;
 				ItemStack input = inventory.getStackInSlot(2);
 				input.shrink(1);
 				ItemStack output = ItemStack.EMPTY;
