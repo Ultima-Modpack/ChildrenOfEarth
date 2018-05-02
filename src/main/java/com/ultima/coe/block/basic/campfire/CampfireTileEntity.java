@@ -2,7 +2,8 @@ package com.ultima.coe.block.basic.campfire;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.entity.item.EntityItem;
+import com.ultima.coe.api.ChildrenOfEarthAPI;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -38,12 +39,11 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	
 	private boolean  isFuel() {
 		boolean flag = false;
-		if(inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:stick") ||
-		   inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:log") ||
-		   inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:log2") ||
-		   inventory.getStackInSlot(0).getItem() == Item.getByNameOrId("minecraft:planks")) {
-			flag = true;
+		
+		for(ItemStack is: ChildrenOfEarthAPI.campfireFuels) {
+			flag |= inventory.getStackInSlot(0).isItemEqual(is);
 		}
+		
 		return flag;
 	}
 	
