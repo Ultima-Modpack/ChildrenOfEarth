@@ -2,7 +2,6 @@ package com.ultima.coe.block.basic.world;
 
 import java.util.Random;
 
-import com.ultima.coe.Reference;
 import com.ultima.coe.block.BlockBase;
 
 import net.minecraft.block.material.Material;
