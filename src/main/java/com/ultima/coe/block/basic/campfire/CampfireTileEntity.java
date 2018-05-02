@@ -37,7 +37,13 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 			if(isFuel() && isFood() && isStarter() && isSpace()) {
 				fire = true;
 				//Remove starter
-				inventory.getStackInSlot(0).shrink(1);
+				for(CampfireStarter cs: ChildrenOfEarthAPI.campfireStarters) {
+					if(cs.matches(inventory.getStackInSlot(1))) {
+						if(!cs.isInfinite()) {
+							inventory.getStackInSlot(1).shrink(1);
+						}
+					}
+				}
 			}
 		}
 		if(fire){
