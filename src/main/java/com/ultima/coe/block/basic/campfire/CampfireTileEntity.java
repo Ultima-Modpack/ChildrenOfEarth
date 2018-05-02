@@ -37,11 +37,16 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 			if(isFuel() && isFood() && isStarter() && isSpace()) {
 				fire = true;
 				//Remove starter
-				inventory.getStackInSlot(0).shrink(1);
+				if(######){
+					inventory.getStackInSlot(1).shrink(1);
+				}
 			}
 		}
 		if(fire){
-			//Cook
+			if(fuel == 0) {
+				inventory.getStackInSlot(0).shrink(1);
+			}
+			
 			
 		}
 	
