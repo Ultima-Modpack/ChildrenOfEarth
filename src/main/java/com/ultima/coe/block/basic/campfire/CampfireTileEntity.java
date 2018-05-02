@@ -50,8 +50,15 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 		}
 		if(fire){
 			if(fuel == 0) {
+				if(inventory.getStackInSlot(1) != ItemStack.EMPTY) {
 				fuel = inventory.getStackInSlot(1).getItem().getItemBurnTime(inventory.getStackInSlot(1));
 				inventory.getStackInSlot(1).shrink(1);
+				}
+				else {
+					progress = 0;
+					fire = false;
+					return;
+				}
 			}
 			progress++;
 			fuel--;
