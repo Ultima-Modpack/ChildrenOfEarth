@@ -63,6 +63,20 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 		return false;
 	}
 	
+	private boolean isSpace() {
+		if(inventory.getStackInSlot(3).isEmpty()) {
+			return true;
+		}
+		
+		for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
+			if(cr.getOutput().isItemEqual(inventory.getStackInSlot(3))) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	private boolean canSmelt() {
 		return false;
 	}
