@@ -55,12 +55,19 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 			progress++;
 			fuel--;
 			if(progress == 200) {
-				inventory.getStackInSlot(2).shrink(1);
-				if(inventory.getStackInSlot(3) == ItemStack.EMPTY) {
-					//Add Food to slot
+				ItemStack input = inventory.getStackInSlot(2);
+				input.shrink(1);
+				ItemStack output = ItemStack.EMPTY;
+				for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
+					if(cr.matches(input)) {
+						output = cr.getOutput();
+					}
 				}
-				else {
-					inventory.getStackInSlot(3).grow(1);
+				
+				if(inventory.getStackInSlot(3).isEmpty()) {
+					inventory.setStackInSlot(3, output);
+				} else {
+					inventory.getStackInSlot(3).grow(output.getCount());;
 				}
 			}
 			
