@@ -6,6 +6,7 @@ import com.ultima.coe.api.ChildrenOfEarthAPI;
 import com.ultima.coe.recipies.campfire.CampfireRecipe;
 import com.ultima.coe.recipies.campfire.CampfireStarter;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -57,10 +58,11 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 			if(progress == 200) {
 				progress = 0;
 				ItemStack input = inventory.getStackInSlot(2);
+				Item itemIn = input.getItem();
 				input.shrink(1);
 				ItemStack output = ItemStack.EMPTY;
 				for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
-					if(cr.matches(input)) {
+					if(cr.matches(new ItemStack(itemIn))) {
 						output = cr.getOutput();
 					}
 				}
@@ -109,12 +111,14 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	}
 	
 	private boolean isSpace() {
-		if(inventory.getStackInSlot(3).isEmpty()) {
+		ItemStack output = inventory.getStackInSlot(3);
+		
+		if(output.isEmpty()) {
 			return true;
 		}
 		
 		for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
-			if(cr.getOutput().isItemEqual(inventory.getStackInSlot(3))) {
+			if(cr.getOutput().isItemEqual(output) && output.getCount() + cr.getOutput().getCount() <= output.getMaxStackSize()) {
 				return true;
 			}
 		}
