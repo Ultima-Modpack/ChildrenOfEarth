@@ -29,7 +29,7 @@ public class ChildrenOfEarthAPI {
 	 * @param infinite
 	 * 		If <code>true</code>, the <code>newStarter</code> will not be consumed when starting a fire
 	 */
-	public static ItemStack addCampfireStartere(ItemStack newStarter, boolean infinite) {
+	public static ItemStack addCampfireStarter(ItemStack newStarter, boolean infinite) {
 		CampfireStarter cfs = new CampfireStarter(newStarter, infinite);
 		campfireStarters.add(cfs);
 		return newStarter;
