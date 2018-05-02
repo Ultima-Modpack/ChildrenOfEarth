@@ -3,6 +3,8 @@ package com.ultima.coe.block.basic.campfire;
 import javax.annotation.Nullable;
 
 import com.ultima.coe.api.ChildrenOfEarthAPI;
+import com.ultima.coe.recipies.campfire.CampfireRecipe;
+import com.ultima.coe.recipies.campfire.CampfireStarter;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,6 +36,11 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	//Returns True if the item can be smelt
 	private boolean isStarter(){
 		boolean flag = false;
+		
+		for(CampfireStarter cs: ChildrenOfEarthAPI.campfireStarters) {
+			flag |= cs.matches(inventory.getStackInSlot(1));
+		}
+		
 		return flag;
 	}
 	
@@ -49,6 +56,11 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	
 	private boolean  isFood() {
 		boolean flag = false;
+		
+		for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
+			flag |= cr.matches(inventory.getStackInSlot(2));
+		}
+		
 		return flag;
 	}
 	
