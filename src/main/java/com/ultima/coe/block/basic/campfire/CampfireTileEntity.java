@@ -62,7 +62,6 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 			}
 			if(fuel > 0) {
 				if(isFood() && isSpace()) {
-					
 					if(progress == 200) {
 						progress = 0;
 						//Process
