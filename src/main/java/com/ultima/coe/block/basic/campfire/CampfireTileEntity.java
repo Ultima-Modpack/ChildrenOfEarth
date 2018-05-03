@@ -26,6 +26,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	private int progress = 0;
 	//If fire is on
 	private boolean fire = false;
+	private int temp = 0;
 	
 	@Override
 	public void update() {
@@ -82,6 +83,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 						}
 					}
 					progress++;
+					System.out.println(progress);
 
 				}
 				else {
@@ -90,8 +92,13 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 				fuel--;
 			}
 		}
+		if(temp == 40) {
 		System.out.println(progress);
-	
+		System.out.println(fire);
+		System.out.println(fuel);
+		temp = 0;
+		}
+		temp++;
 	}
 	
 	//Returns True if the item can be smelt
