@@ -50,39 +50,48 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 		}
 		if(fire){
 			if(fuel == 0) {
-				if(inventory.getStackInSlot(1) != ItemStack.EMPTY) {
-				fuel = inventory.getStackInSlot(1).getItem().getItemBurnTime(inventory.getStackInSlot(1));
-				inventory.getStackInSlot(1).shrink(1);
+				if(isFuel() && isFood() && isSpace()) {
+					fuel = inventory.getStackInSlot(0).getItem().getItemBurnTime(inventory.getStackInSlot(0));
+					inventory.getStackInSlot(0).shrink(1);
 				}
 				else {
 					progress = 0;
 					fire = false;
-					return;
+					
 				}
 			}
-			progress++;
-			fuel--;
-			if(progress == 200) {
-				progress = 0;
-				ItemStack input = inventory.getStackInSlot(2);
-				Item itemIn = input.getItem();
-				input.shrink(1);
-				ItemStack output = ItemStack.EMPTY;
-				for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
-					if(cr.matches(new ItemStack(itemIn))) {
-						output = cr.getOutput();
+			if(fuel > 0) {
+				if(isFood() && isSpace()) {
+					
+					if(progress == 200) {
+						progress = 0;
+						//Process
+						ItemStack input = inventory.getStackInSlot(2);
+						Item itemIn = input.getItem();
+						input.shrink(1);
+						ItemStack output = ItemStack.EMPTY;
+						for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
+							if(cr.matches(new ItemStack(itemIn))) {
+								output = cr.getOutput();
+							}
+						}
+						
+						if(inventory.getStackInSlot(3).isEmpty()) {
+							inventory.setStackInSlot(3, output);
+						} else {
+							inventory.getStackInSlot(3).grow(output.getCount());;
+						}
 					}
+					progress++;
+
 				}
-				
-				if(inventory.getStackInSlot(3).isEmpty()) {
-					inventory.setStackInSlot(3, output);
-				} else {
-					inventory.getStackInSlot(3).grow(output.getCount());;
+				else {
+					progress = 0;
 				}
+				fuel--;
 			}
-			
-			
 		}
+		System.out.println(progress);
 	
 	}
 	
