@@ -3,6 +3,7 @@ package com.ultima.coe.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ultima.coe.recipies.campfire.CampfireFuel;
 import com.ultima.coe.recipies.campfire.CampfireRecipe;
 import com.ultima.coe.recipies.campfire.CampfireStarter;
 
@@ -10,15 +11,20 @@ import net.minecraft.item.ItemStack;
 
 public class ChildrenOfEarthAPI {
 	
-	public static final List<ItemStack> campfireFuels = new ArrayList<ItemStack>();
+	public static final List<CampfireFuel> campfireFuels = new ArrayList<CampfireFuel>();
 	public static final List<CampfireStarter> campfireStarters = new ArrayList<CampfireStarter>();
 	public static final List<CampfireRecipe> campfireRecipes = new ArrayList<CampfireRecipe>();
 	
 	/**
 	 * Adds a new item to be accepted as a fuel and returns it
+	 * @param newFuel
+	 * 		<code>Item</code> to be added as a fuel for the campfire
+	 * @param fuelVal
+	 * 		Burn time for <code>newFuel</code>. Logs have a value of <code>300</code>; Sticks have a value of <code>100
 	 */
-	public static ItemStack addCampfireFuel(ItemStack newFuel) {
-		campfireFuels.add(newFuel);
+	public static ItemStack addCampfireFuel(ItemStack newFuel, int fuelVal) {
+		CampfireFuel cff = new CampfireFuel(newFuel, fuelVal);
+		campfireFuels.add(cff);
 		return newFuel;
 	}
 	

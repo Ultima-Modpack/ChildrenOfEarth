@@ -9,10 +9,10 @@ public class RegisterCampfireRecipe {
 
 	public static void init() {
 		//Fuel
-		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:log")));
-		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:log2")));
-		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:planks")));
-		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:stick")));
+		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:log")), 300);
+		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:log2")), 300);
+		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:planks")), 300);
+		ChildrenOfEarthAPI.addCampfireFuel(new ItemStack(Item.getByNameOrId("minecraft:stick")), 100);
 		
 		//Starter
 		ChildrenOfEarthAPI.addCampfireStarter(new ItemStack(Item.getByNameOrId("minecraft:stick")), false);
