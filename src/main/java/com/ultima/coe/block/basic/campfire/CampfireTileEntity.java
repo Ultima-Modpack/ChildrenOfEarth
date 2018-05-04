@@ -3,6 +3,7 @@ package com.ultima.coe.block.basic.campfire;
 import javax.annotation.Nullable;
 
 import com.ultima.coe.api.ChildrenOfEarthAPI;
+import com.ultima.coe.recipies.campfire.CampfireFuel;
 import com.ultima.coe.recipies.campfire.CampfireRecipe;
 import com.ultima.coe.recipies.campfire.CampfireStarter;
 
@@ -113,8 +114,8 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 	}
 	
 	private boolean  isFuel() {
-		for(ItemStack is: ChildrenOfEarthAPI.campfireFuels) {
-			if(inventory.getStackInSlot(0).isItemEqual(is)) {
+		for(CampfireFuel cf: ChildrenOfEarthAPI.campfireFuels) {
+			if(cf.matches(inventory.getStackInSlot(0))) {
 				return true;
 			}
 		}
