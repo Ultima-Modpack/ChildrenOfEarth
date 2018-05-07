@@ -17,32 +17,31 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class CampfireTileEntity extends TileEntity implements ITickable{
-	
+public class CampfireTileEntity extends TileEntity implements ITickable {
+
 	private ItemStackHandler inventory = new ItemStackHandler(4);
-	
-	//Amount of fuel left burning
+
+	// Amount of fuel left burning
 	private int fuel = 0;
 	// 0 = item is finished cooking
 	private int progress = 0;
-	//If fire is on
+	// If fire is on
 	private boolean fire = false;
 	private int temp = 0;
-	
+
 	@Override
 	public void update() {
-		if(fire) {
-			if((fuel == 0) &&(!(isFuel() || isFood() || isSpace()))) {
+		if (fire) {
+			if ((fuel == 0) && (!(isFuel() || isFood() || isSpace()))) {
 				fire = false;
 			}
-		}
-		else {
-			if(isFuel() && isFood() && isStarter() && isSpace()) {
+		} else {
+			if (isFuel() && isFood() && isStarter() && isSpace()) {
 				fire = true;
-				//Remove starter
-				for(CampfireStarter cs: ChildrenOfEarthAPI.campfireStarters) {
-					if(cs.matches(inventory.getStackInSlot(1))) {
-						if(!cs.isInfinite()) {
+				// Remove starter
+				for (CampfireStarter cs : ChildrenOfEarthAPI.campfireStarters) {
+					if (cs.matches(inventory.getStackInSlot(1))) {
+						if (!cs.isInfinite()) {
 							inventory.getStackInSlot(1).shrink(1);
 						}
 					}
@@ -50,106 +49,109 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 				}
 			}
 		}
-		if(fire){
-			if(fuel == 0) {
-				if(isFuel() && isFood() && isSpace()) {
-					fuel = inventory.getStackInSlot(0).getItem().getItemBurnTime(inventory.getStackInSlot(0));
-					inventory.getStackInSlot(0).shrink(1);
-				}
-				else {
+		if (fire) {
+			if (fuel == 0) {
+				if (isFuel() && isFood() && isSpace()) {
+					for (CampfireFuel cf : ChildrenOfEarthAPI.campfireFuels) {
+						if (cf.matches(inventory.getStackInSlot(0))) {
+							fuel = cf.getFuelVal();
+						}
+						inventory.getStackInSlot(0).shrink(1);
+					}
+				} else {
 					progress = 0;
 					fire = false;
-					
+
 				}
 			}
-			if(fuel > 0) {
-				if(isFood() && isSpace()) {
-					if(progress == 200) {
+			if (fuel > 0) {
+				if (isFood() && isSpace()) {
+					if (progress == 200) {
 						progress = 0;
-						//Process
+						// Process
 						ItemStack input = inventory.getStackInSlot(2);
 						Item itemIn = input.getItem();
 						input.shrink(1);
 						ItemStack output = ItemStack.EMPTY;
-						for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
-							if(cr.matches(new ItemStack(itemIn))) {
+						for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
+							if (cr.matches(new ItemStack(itemIn))) {
 								output = cr.getOutput();
 							}
 						}
-						
-						if(inventory.getStackInSlot(3).isEmpty()) {
+
+						if (inventory.getStackInSlot(3).isEmpty()) {
 							inventory.setStackInSlot(3, output);
 						} else {
-							inventory.getStackInSlot(3).grow(output.getCount());;
+							inventory.getStackInSlot(3).grow(output.getCount());
+							;
 						}
 					}
 					progress++;
 					System.out.println(progress);
 
-				}
-				else {
+				} else {
 					progress = 0;
 				}
 				fuel--;
 			}
 		}
-		if(temp == 40) {
-		System.out.println(progress);
-		System.out.println(fire);
-		System.out.println(fuel);
-		temp = 0;
+		if (temp == 40) {
+			System.out.println(progress);
+			System.out.println(fire);
+			System.out.println(fuel);
+			temp = 0;
 		}
 		temp++;
 	}
-	
-	//Returns True if the item can be smelt
-	private boolean isStarter(){
-		for(CampfireStarter cs: ChildrenOfEarthAPI.campfireStarters) {
-			if(cs.matches(inventory.getStackInSlot(1))) {
+
+	// Returns True if the item can be smelt
+	private boolean isStarter() {
+		for (CampfireStarter cs : ChildrenOfEarthAPI.campfireStarters) {
+			if (cs.matches(inventory.getStackInSlot(1))) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
-	private boolean  isFuel() {
-		for(CampfireFuel cf: ChildrenOfEarthAPI.campfireFuels) {
-			if(cf.matches(inventory.getStackInSlot(0))) {
+
+	private boolean isFuel() {
+		for (CampfireFuel cf : ChildrenOfEarthAPI.campfireFuels) {
+			if (cf.matches(inventory.getStackInSlot(0))) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
-	private boolean  isFood() {
-		for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
-			if(cr.matches(inventory.getStackInSlot(2))) {
+
+	private boolean isFood() {
+		for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
+			if (cr.matches(inventory.getStackInSlot(2))) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	private boolean isSpace() {
 		ItemStack output = inventory.getStackInSlot(3);
-		
-		if(output.isEmpty()) {
+
+		if (output.isEmpty()) {
 			return true;
 		}
-		
-		for(CampfireRecipe cr: ChildrenOfEarthAPI.campfireRecipes) {
-			if(cr.getOutput().isItemEqual(output) && output.getCount() + cr.getOutput().getCount() <= output.getMaxStackSize()) {
+
+		for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
+			if (cr.getOutput().isItemEqual(output)
+					&& output.getCount() + cr.getOutput().getCount() <= output.getMaxStackSize()) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
-	
+
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("inventory", inventory.serializeNBT());
@@ -158,7 +160,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 		compound.setBoolean("fire", this.fire);
 		return super.writeToNBT(compound);
 	}
-	
+
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
@@ -167,19 +169,18 @@ public class CampfireTileEntity extends TileEntity implements ITickable{
 		this.fire = compound.getBoolean("fire");
 		super.readFromNBT(compound);
 	}
-	
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T)inventory : super.getCapability(capability, facing);
+		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) inventory
+				: super.getCapability(capability, facing);
 	}
 
-
-	
 }
