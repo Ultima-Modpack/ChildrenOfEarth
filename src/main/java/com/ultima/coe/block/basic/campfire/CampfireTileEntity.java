@@ -27,7 +27,6 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 	private int progress = 0;
 	// If fire is on
 	private boolean fire = false;
-	private int temp = 0;
 
 	@Override
 	public void update() {
@@ -56,8 +55,9 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 						if (cf.matches(inventory.getStackInSlot(0))) {
 							fuel = cf.getFuelVal();
 						}
-						inventory.getStackInSlot(0).shrink(1);
 					}
+					inventory.getStackInSlot(0).shrink(1);
+
 				} else {
 					progress = 0;
 					fire = false;
@@ -82,12 +82,11 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 						if (inventory.getStackInSlot(3).isEmpty()) {
 							inventory.setStackInSlot(3, output);
 						} else {
-							inventory.getStackInSlot(3).grow(output.getCount());
-							;
+							inventory.getStackInSlot(3).grow(1);
+							progress++;
 						}
 					}
 					progress++;
-					System.out.println(progress);
 
 				} else {
 					progress = 0;
@@ -95,13 +94,6 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 				fuel--;
 			}
 		}
-		if (temp == 40) {
-			System.out.println(progress);
-			System.out.println(fire);
-			System.out.println(fuel);
-			temp = 0;
-		}
-		temp++;
 	}
 
 	// Returns True if the item can be smelt
