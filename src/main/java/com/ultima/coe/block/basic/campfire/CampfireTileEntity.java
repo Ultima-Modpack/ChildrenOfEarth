@@ -1,7 +1,5 @@
 package com.ultima.coe.block.basic.campfire;
 
-import javax.annotation.Nullable;
-
 import com.ultima.coe.api.ChildrenOfEarthAPI;
 import com.ultima.coe.recipies.campfire.CampfireFuel;
 import com.ultima.coe.recipies.campfire.CampfireRecipe;
@@ -9,17 +7,12 @@ import com.ultima.coe.recipies.campfire.CampfireStarter;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class CampfireTileEntity extends TileEntity implements IInventory, ITickable {
 
@@ -37,7 +30,7 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 	
 	@Override
 	public void update() {
-		
+		// TODO write
 	}
 
 	public double fractionOfFuelRemaining() {
@@ -210,19 +203,24 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 	public int getField(int id) {
 		// TODO Finish
 		switch (id) {
-		case 0:
-			
-			break;
-		case 1:
-			break;
+			case 0: // Burn time remaining
+				return burnTimeRemaining;
+			case 1: // Progress towards completion
+				return cookTime;
 		}
 		return 0;
 	}
 
 	@Override
 	public void setField(int id, int value) {
-		// TODO Finish
-		
+		switch (id) {
+			case 0:
+				burnTimeRemaining = value;
+				break;
+			case 1:
+				cookTime = value;
+				break;
+		}
 	}
 
 	@Override
