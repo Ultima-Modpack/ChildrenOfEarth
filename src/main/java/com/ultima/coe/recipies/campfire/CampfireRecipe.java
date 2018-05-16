@@ -8,10 +8,16 @@ public class CampfireRecipe {
 	
 	private ItemStack input;
 	private ItemStack output;
+	private int amt;
 	
 	public CampfireRecipe(ItemStack input, ItemStack output) {
+		this(input, output, 1);
+	}
+	
+	public CampfireRecipe(ItemStack input, ItemStack output, int amt) {
 		this.input = input;
 		this.output = output;
+		this.amt = amt;
 	}
 	
 	@Nullable
@@ -21,6 +27,10 @@ public class CampfireRecipe {
 	
 	public ItemStack getOutput() {
 		return output;
+	}
+	
+	public int getAmt() {
+		return amt;
 	}
 
 }

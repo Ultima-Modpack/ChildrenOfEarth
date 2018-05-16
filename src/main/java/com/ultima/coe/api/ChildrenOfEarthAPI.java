@@ -42,16 +42,29 @@ public class ChildrenOfEarthAPI {
 	}
 	
 	/**
-	 * Adds a new campfire roasting recipe and returns it
+	 * Adds a new campfire roasting recipe with output quantity 1
 	 * @param input
 	 * 		<code>Item</code> to be cooked
 	 * @param output
-	 * 		<code>Item</code> returned from cooking
+	 * 		<code>Item</code> to be returned from cooking
 	 */
-	public static CampfireRecipe addCampfireRecipe(ItemStack input, ItemStack output) {
+	public static void addCampfireRecipe(ItemStack input, ItemStack output) {
 		CampfireRecipe cfr = new CampfireRecipe(input, output);
 		campfireRecipes.add(cfr);
-		return cfr;
+	}
+	
+	/**
+	 * Adds a new campfire roasting recipe with a custom output quantity
+	 * @param input
+	 * 		<code>Item</code> to be cooked
+	 * @param output
+	 * 		<code>Item</code> to be returned from cooking
+	 * @param amt
+	 * 		Number of <code>output</code>s to be returned from cooking
+	 */
+	public static void addCampfireRecipe(ItemStack input, ItemStack output, int amt) {
+		CampfireRecipe cfr = new CampfireRecipe(input, output, amt);
+		campfireRecipes.add(cfr);
 	}
 	
 }
