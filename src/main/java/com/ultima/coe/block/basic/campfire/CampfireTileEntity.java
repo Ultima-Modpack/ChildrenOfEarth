@@ -207,6 +207,10 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 				return burnTimeRemaining;
 			case 1: // Progress towards completion
 				return cookTime;
+			case 2: // Initial burn time
+				return burnTimeInitialValue;
+			case 3: // Max progress
+				return COOK_TIME_FOR_COMPLETION;
 		}
 		return 0;
 	}
@@ -220,12 +224,15 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 			case 1:
 				cookTime = value;
 				break;
+			case 2:
+				burnTimeInitialValue = value;
+				break;
 		}
 	}
 
 	@Override
 	public int getFieldCount() {
-		return 2;
+		return 4;
 	}
 
 	@Override
