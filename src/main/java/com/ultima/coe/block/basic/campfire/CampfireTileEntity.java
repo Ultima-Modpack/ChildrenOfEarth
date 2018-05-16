@@ -227,6 +227,8 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 			case 2:
 				burnTimeInitialValue = value;
 				break;
+			case 3:
+				break;
 		}
 	}
 
