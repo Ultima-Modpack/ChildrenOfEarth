@@ -7,6 +7,8 @@ import com.ultima.coe.recipies.campfire.CampfireFuel;
 import com.ultima.coe.recipies.campfire.CampfireRecipe;
 import com.ultima.coe.recipies.campfire.CampfireStarter;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,7 +19,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class CampfireTileEntity extends TileEntity implements ITickable {
+public class CampfireTileEntity extends TileEntity implements IInventory, ITickable {
 
 	private ItemStackHandler inventory = new ItemStackHandler(4);
 
@@ -173,6 +175,100 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY ? (T) inventory
 				: super.getCapability(capability, facing);
+	}
+
+	@Override
+	public String getName() {
+		return "container.coe_inventory_furnace.name";
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
+	@Override
+	public int getSizeInventory() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ItemStack decrStackSize(int index, int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isUsableByPlayer(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

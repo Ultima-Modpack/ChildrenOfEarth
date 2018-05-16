@@ -3,16 +3,23 @@ package com.ultima.coe.block.basic.campfire;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class CampfireContainer extends Container {
 	
+	final CampfireTileEntity campfire;
+	
 	public CampfireContainer(InventoryPlayer playerInv, final CampfireTileEntity campfire) {
 		
+		this.campfire = campfire;
 		IItemHandler inventory = campfire.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, EnumFacing.NORTH);
 		
 		// First 4 slots
@@ -67,5 +74,7 @@ public class CampfireContainer extends Container {
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return true;
 	}
+	
+
 
 }
