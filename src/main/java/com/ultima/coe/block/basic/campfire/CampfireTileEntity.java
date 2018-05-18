@@ -5,6 +5,7 @@ import com.ultima.coe.recipies.campfire.CampfireFuel;
 import com.ultima.coe.recipies.campfire.CampfireRecipe;
 import com.ultima.coe.recipies.campfire.CampfireStarter;
 
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -12,6 +13,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class CampfireTileEntity extends TileEntity implements IInventory, ITickable {
@@ -20,8 +23,8 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 	private int burnTimeRemaining = 0;
 	private int burnTimeInitialValue = 0;
 	private int cookTime;
+	private boolean fire;
 	public static final int COOK_TIME_FOR_COMPLETION = 200;
-	private boolean fire = false;
 	private ItemStackHandler inventory = new ItemStackHandler(SLOTS);
 
 	public CampfireTileEntity() {
@@ -90,26 +93,16 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 	
 	@Override
 	public ItemStack decrStackSize(int slotIndex, int count) {
-		ItemStack itemStackInSlot = getStackInSlot(slotIndex);
-		if (itemStackInSlot.isEmpty()) return ItemStack.EMPTY;  //isEmpty(), EMPTY_ITEM
-
-		ItemStack itemStackRemoved;
-		if (itemStackInSlot.getCount() <= count) { //getStackSize
-			itemStackRemoved = itemStackInSlot;
-			setInventorySlotContents(slotIndex, ItemStack.EMPTY); // EMPTY_ITEM
-		} else {
-			itemStackRemoved = itemStackInSlot.splitStack(count);
-			if (itemStackInSlot.getCount() == 0) { //getStackSize
-				setInventorySlotContents(slotIndex, ItemStack.EMPTY); //EMPTY_ITEM
-			}
-		}
 		markDirty();
-		return itemStackRemoved;
+		return inventory.extractItem(slotIndex, count, false);
+
 	}
 	
 	@Override
 	public void setInventorySlotContents(int slotIndex, ItemStack itemstack) {
-		inventory.setStackInSlot(slotIndex, itemstack);
+		
+		inventory.extractItem(slotIndex, getInventoryStackLimit(), false);
+		inventory.insertItem(slotIndex, itemstack, false);
 		markDirty();
 	}
 	
@@ -178,9 +171,8 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 	
 	@Override
 	public ItemStack removeStackFromSlot(int slotIndex) {
-		ItemStack temp =inventory.getStackInSlot(slotIndex);
-		inventory.setStackInSlot(slotIndex, ItemStack.EMPTY);
-		return temp;
+		markDirty();
+		return inventory.extractItem(slotIndex, this.getInventoryStackLimit(), false);
 	}
 	
 	@Override
@@ -244,5 +236,16 @@ public class CampfireTileEntity extends TileEntity implements IInventory, ITicka
 		}
 		
 	}
+	
+	public boolean isBurning()
+    {
+        return this.burnTimeRemaining > 0;
+    }
+	
+    @SideOnly(Side.CLIENT)
+    public static boolean isBurning(CampfireTileEntity inventory)
+    {
+        return inventory.getField(0) > 0;
+    }
 
 }
