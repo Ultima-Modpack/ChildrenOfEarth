@@ -23,8 +23,10 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 	// Amount of fuel left burning
 	private int fuel = 0;
+	private int fuelMax = 0;
 	// 0 = item is finished cooking
 	private int progress = 0;
+	private final int totalCookTime = 200;
 	// If fire is on
 	private boolean fire = false;
 
@@ -53,7 +55,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 				if (isFuel() && isFood() && isSpace()) {
 					for (CampfireFuel cf : ChildrenOfEarthAPI.campfireFuels) {
 						if (cf.matches(inventory.getStackInSlot(0))) {
-							fuel = cf.getFuelVal();
+							fuelMax = fuel = cf.getFuelVal();
 						}
 					}
 					inventory.getStackInSlot(0).shrink(1);
@@ -144,10 +146,12 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 		return false;
 	}
 
+
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("inventory", inventory.serializeNBT());
 		compound.setInteger("fuel", this.fuel);
+		compound.setInteger("fuelmax", fuelmax);
 		compound.setInteger("progress", this.progress);
 		compound.setBoolean("fire", this.fire);
 		return super.writeToNBT(compound);
@@ -157,6 +161,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 	public void readFromNBT(NBTTagCompound compound) {
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
 		this.fuel = compound.getInteger("fuel");
+		this.fuelmax = compound.getInteger("fuelmax");
 		this.progress = compound.getInteger("progress");
 		this.fire = compound.getBoolean("fire");
 		super.readFromNBT(compound);
