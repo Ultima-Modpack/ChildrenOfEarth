@@ -150,7 +150,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		compound.setTag("inventory", inventory.serializeNBT());
 		compound.setInteger("fuel", this.fuel);
-		compound.setInteger("fuelmax", fuelmax);
+		compound.setInteger("fuelmax", fuelMax);
 		compound.setInteger("progress", this.progress);
 		compound.setBoolean("fire", this.fire);
 		return super.writeToNBT(compound);
@@ -160,7 +160,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 	public void readFromNBT(NBTTagCompound compound) {
 		inventory.deserializeNBT(compound.getCompoundTag("inventory"));
 		this.fuel = compound.getInteger("fuel");
-		this.fuelmax = compound.getInteger("fuelmax");
+		this.fuelMax = compound.getInteger("fuelmax");
 		this.progress = compound.getInteger("progress");
 		this.fire = compound.getBoolean("fire");
 		super.readFromNBT(compound);
@@ -171,7 +171,6 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 		return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY || super.hasCapability(capability, facing);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Nullable
 	@Override
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
