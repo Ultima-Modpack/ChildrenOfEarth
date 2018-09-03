@@ -1,44 +1,71 @@
 package com.ultima.coe.block.basic.campfire;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ultima.coe.Reference;
-import com.ultima.coe.common.RegisterBlock;
 
 import cjminecraft.core.client.gui.GuiBase;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
+import cjminecraft.core.client.gui.element.ElementEnergyBar;
+import cjminecraft.core.client.gui.element.ElementProgressBar;
+import cjminecraft.core.client.gui.element.ElementProgressBar.ProgressBarDirection;
+import cjminecraft.core.network.PacketHandler;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.items.CapabilityItemHandler;
 
-public class CampfireGui extends GuiBase {
+public class CampfireGui extends GuiBase{
 	
-	private InventoryPlayer playerInv;
-	private static final ResourceLocation BG_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/campfire.png");
+	public static final ResourceLocation TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/gui/campfire.png");
+	private CampfireTileEntity te;
+	public static int cooldown, maxCooldown = 0;
+	public static int sync = 0;
 	
-	public CampfireGui(Container container, InventoryPlayer playerInv) {
-		super(container);
-		this.playerInv = playerInv;
+	public CampfireGui(InventoryPlayer playerInv, CampfireTileEntity te) {
+		super(new CampfireContainer(playerInv, te), TEXTURE);
+		setGuiSize(176, 166);
+		this.te = te;
+		this.name = "container.campfire";
 	}
 	
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		
-		GlStateManager.color(1, 1, 1);
-		mc.getTextureManager().bindTexture(BG_TEXTURE);
-		int x = (width - xSize) / 2;
-		int y = (height - ySize) / 2;
-		drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
-		
+	public void initGui() {
+		super.initGui();
+		addElement(new ElementEnergyBar(this, 7, 16, 18, 54).shouldSync(this.te.getPos(), null));
+		addElement(new ElementProgressBar(this, 135, 36, 14, 14).setDirection(ProgressBarDirection.LEFT_TO_RIGHT)
+				.setTextureUV(176, 0).setTexture(TEXTURE, 256, 256));
 	}
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		
-		String name = I18n.format(RegisterBlock.campfire.getUnlocalizedName() + ".name");
-		fontRenderer.drawString(name, xSize / 2 - fontRenderer.getStringWidth(name) / 2, 6, 0x404040);
-		fontRenderer.drawString(playerInv.getDisplayName().getUnformattedText(), 8, ySize - 94, 0x404040);
-		
+		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+
+		int actualMouseX = mouseX - ((this.width - this.xSize) / 2);
+		int actualMouseY = mouseY - ((this.height - this.ySize) / 2);
+
+		if (isPointInRegion(134, 17, 18, 18, mouseX, mouseY)
+				&& te.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null)
+						.getStackInSlot(9) == ItemStack.EMPTY) {
+			List<String> text = new ArrayList<String>();
+			text.add(TextFormatting.GRAY + I18n.format("gui.block_breaker.enchanted_book.tooltip"));
+			this.drawHoveringText(text, actualMouseX, actualMouseY);
+		}
 	}
 
+
+	@Override
+	protected void updateElementInformation() {
+		super.updateElementInformation();
+		((ElementProgressBar) this.elements.get(1)).setMin(cooldown).setMax(maxCooldown);
+		sync++;
+		sync %= 10;
+		if (sync == 0)
+			PacketHandler.INSTANCE
+					.sendToServer(new PacketGetWorker(this.te.getPos(), this.mc.player.getAdjustedHorizontalFacing(),
+							"cjminecraft.bitofeverything.client.gui.GuiBlockBreaker", "cooldown", "maxCooldown"));
+	}
 }

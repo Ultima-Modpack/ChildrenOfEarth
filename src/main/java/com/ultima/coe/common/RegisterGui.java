@@ -1,7 +1,7 @@
 package com.ultima.coe.common;
 
 import com.ultima.coe.block.basic.campfire.CampfireContainer;
-import com.ultima.coe.block.basic.campfire.CampfireGui;
+import com.ultima.coe.block.basic.campfire.CampfireGuiOld;
 import com.ultima.coe.block.basic.campfire.CampfireTileEntity;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +28,7 @@ public class RegisterGui implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch (ID) {
 			case CAMPFIRE:
-				return new CampfireGui(getServerGuiElement(ID, player, world, x, y, z), player.inventory);
+				return new CampfireGuiOld(getServerGuiElement(ID, player, world, x, y, z), player.inventory);
 			default:
 				return null;
 		}
