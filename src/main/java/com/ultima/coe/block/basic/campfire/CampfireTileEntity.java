@@ -46,7 +46,6 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 							inventory.getStackInSlot(1).shrink(1);
 						}
 					}
-
 				}
 			}
 		}
