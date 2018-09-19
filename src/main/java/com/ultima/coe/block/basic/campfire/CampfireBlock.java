@@ -29,6 +29,8 @@ public class CampfireBlock extends BlockTileEntity<CampfireTileEntity> {
 		super(Material.FIRE, "campfire");
 	}
 	
+	
+	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
 			EnumFacing side, float hitX, float hitY, float hitZ) {

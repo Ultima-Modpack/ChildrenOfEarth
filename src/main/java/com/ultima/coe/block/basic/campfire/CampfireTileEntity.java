@@ -19,7 +19,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class CampfireTileEntity extends TileEntity implements ITickable {
 
-	private ItemStackHandler inventory = new ItemStackHandler(4);
+	private ItemStackHandler inventory = new ItemStackHandler(8);
 
 	// Amount of fuel left burning
 	private int fuel = 0;
@@ -32,72 +32,45 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 	@Override
 	public void update() {
-		if (fire) {
-			if ((fuel == 0) && (!(isFuel() || isFood() || isSpace()))) {
-				fire = false;
-			}
-		} else {
-			if (isFuel() && isFood() && isStarter() && isSpace()) {
-				fire = true;
-				// Remove starter
-				for (CampfireStarter cs : ChildrenOfEarthAPI.campfireStarters) {
-					if (cs.matches(inventory.getStackInSlot(1))) {
-						if (!cs.isInfinite()) {
-							inventory.getStackInSlot(1).shrink(1);
-						}
-					}
-				}
-			}
+		// Fire
+		if (!fire && isStarter() && isFuel() && isFood() && isSpace()) {
+			useStarter();
+			fire = true;
 		}
-		if (fire) {
-			if (fuel == 0) {
-				if (isFuel() && isFood() && isSpace()) {
-					for (CampfireFuel cf : ChildrenOfEarthAPI.campfireFuels) {
-						if (cf.matches(inventory.getStackInSlot(0))) {
-							fuelMax = fuel = cf.getFuelVal();
-						}
-					}
-					inventory.getStackInSlot(0).shrink(1);
-
-				} else {
-					progress = 0;
+		//Fuel
+		if(fire){
+			if(fuel <= 0) {
+				if(isFuel()) {
+					useFuel();
+					fuel--;
+				}else {
 					fire = false;
-
 				}
-			}
-			if (fuel > 0) {
-				if (isFood() && isSpace()) {
-					if (progress == 200) {
-						progress = 0;
-						// Process
-						ItemStack input = inventory.getStackInSlot(2);
-						Item itemIn = input.getItem();
-						input.shrink(1);
-						ItemStack output = ItemStack.EMPTY;
-						for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
-							if (cr.matches(new ItemStack(itemIn))) {
-								output = cr.getOutput();
-							}
-						}
-
-						if (inventory.getStackInSlot(3).isEmpty()) {
-							inventory.setStackInSlot(3, output);
-						} else {
-							inventory.getStackInSlot(3).grow(1);
-							progress++;
-						}
-					}
-					progress++;
-
-				} else {
-					progress = 0;
-				}
+			}else {
 				fuel--;
 			}
 		}
+		//Progress
+		if(fire) {
+			if(isFood() && isSpace()) {
+				progress++;
+			}else {
+				progress = 0;
+			}
+		}
+		//Cook
+		if(progress == totalCookTime) {
+			cook();
+			progress = 0;
+		}
+		//Sync
+		updateGUI();
+		//Debug
+		//System.out.println("Fire:" + fire + " Fuel:" + fuel + " FuelMax:" + fuelMax + " Progress:" + progress + " TotalCookTime:" + totalCookTime);
+
 	}
 
-	// Returns True if the item can be smelt
+	// Returns True if the item is a starter
 	private boolean isStarter() {
 		for (CampfireStarter cs : ChildrenOfEarthAPI.campfireStarters) {
 			if (cs.matches(inventory.getStackInSlot(1))) {
@@ -107,6 +80,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 		return false;
 	}
+	
 
 	private boolean isFuel() {
 		for (CampfireFuel cf : ChildrenOfEarthAPI.campfireFuels) {
@@ -117,6 +91,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 		return false;
 	}
+	
 
 	private boolean isFood() {
 		for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
@@ -127,6 +102,7 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 		return false;
 	}
+	
 
 	private boolean isSpace() {
 		ItemStack output = inventory.getStackInSlot(3);
@@ -144,7 +120,41 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 		return false;
 	}
+	
+	private void updateGUI() {
+		inventory.setStackInSlot(4, new ItemStack(Item.getByNameOrId("coe:data"), fuel));
+		inventory.setStackInSlot(5, new ItemStack(Item.getByNameOrId("coe:data"), fuelMax));
+		inventory.setStackInSlot(6, new ItemStack(Item.getByNameOrId("coe:data"), progress));
+		inventory.setStackInSlot(7, new ItemStack(Item.getByNameOrId("coe:data"), totalCookTime));
+	}
+	
+	// TODO
+	private ItemStack output() {
+		for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
+			if (cr.matches(inventory.getStackInSlot(2))) {
+				System.out.println(cr.getOutput().getItem().getRegistryName().toString());
+				return cr.getOutput();
+			}
+		}
+		return ItemStack.EMPTY;
+	}
 
+	// TODO
+	private void cook() {
+		inventory.insertItem(3, output(), false);
+		System.out.println("*****************************Cook*****************************");
+	}
+
+	// TODO
+	private void useFuel() {
+
+	}
+	
+	//TODO
+	private void useStarter(){
+		
+	}
+	
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {

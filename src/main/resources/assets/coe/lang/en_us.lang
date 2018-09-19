@@ -1,5 +1,6 @@
 # Items
 item.pebble.name=Pebble
+item.data.name=Data
 
 # Blocks
 tile.campfire.name=Campfire
