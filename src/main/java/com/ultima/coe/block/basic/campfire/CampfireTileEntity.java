@@ -14,13 +14,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class CampfireTileEntity extends TileEntity implements ITickable {
 
 	private ItemStackHandler inventory = new ItemStackHandler(8);
-
+	
 	// Amount of fuel left burning
 	private int fuel = 0;
 	private int fuelMax = 0;
@@ -113,27 +114,30 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 		for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
 			if (cr.getOutput().isItemEqual(output)
-					&& output.getCount() + cr.getOutput().getCount() <= output.getMaxStackSize()) {
+					&& output.getCount() + cr.getAmt() <= output.getMaxStackSize()) {
 				return true;
 			}
 		}
 
 		return false;
 	}
-	
+
 	private void updateGUI() {
+		if(world.isRemote) {
 		inventory.setStackInSlot(4, new ItemStack(Item.getByNameOrId("coe:data"), fuel));
 		inventory.setStackInSlot(5, new ItemStack(Item.getByNameOrId("coe:data"), fuelMax));
 		inventory.setStackInSlot(6, new ItemStack(Item.getByNameOrId("coe:data"), progress));
 		inventory.setStackInSlot(7, new ItemStack(Item.getByNameOrId("coe:data"), totalCookTime));
+		}
 	}
 	
 	// TODO
 	private ItemStack output() {
 		for (CampfireRecipe cr : ChildrenOfEarthAPI.campfireRecipes) {
 			if (cr.matches(inventory.getStackInSlot(2))) {
-				System.out.println(cr.getOutput().getItem().getRegistryName().toString());
-				return cr.getOutput();
+				ItemStack output = cr.getOutput();
+				output.setCount(cr.getAmt() + inventory.getStackInSlot(3).getCount());
+				return output;
 			}
 		}
 		return ItemStack.EMPTY;
@@ -141,18 +145,32 @@ public class CampfireTileEntity extends TileEntity implements ITickable {
 
 	// TODO
 	private void cook() {
-		inventory.insertItem(3, output(), false);
-		System.out.println("*****************************Cook*****************************");
+		ItemStack newstack = inventory.getStackInSlot(2);
+		newstack.setCount(newstack.getCount()-1);
+		if(newstack != ItemStack.EMPTY) {
+			inventory.setStackInSlot(3, output());
+		}
+		inventory.setStackInSlot(2, newstack);
 	}
 
 	// TODO
 	private void useFuel() {
-
+		for (CampfireFuel cf : ChildrenOfEarthAPI.campfireFuels) {
+			if (cf.matches(inventory.getStackInSlot(0))) {
+				fuel = cf.getFuelVal();
+				fuelMax = fuel;
+			}
+		}
+		ItemStack newstack = inventory.getStackInSlot(0);
+		newstack.setCount(newstack.getCount()-1);
+		inventory.setStackInSlot(0, newstack);
 	}
 	
 	//TODO
 	private void useStarter(){
-		
+		ItemStack newstack = inventory.getStackInSlot(1);
+		newstack.setCount(newstack.getCount()-1);
+		inventory.setStackInSlot(1, newstack);
 	}
 	
 

@@ -27,7 +27,7 @@ public class CampfireGui extends GuiContainer {
 	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		
+		drawDefaultBackground();
 		GlStateManager.color(1, 1, 1);
 		mc.getTextureManager().bindTexture(BG_TEXTURE);
 		int x = (width - xSize) / 2;
@@ -39,17 +39,31 @@ public class CampfireGui extends GuiContainer {
 		fuelMax = container.getSlot(5).getStack().getCount();
 		progress = container.getSlot(6).getStack().getCount();
 		totalCookTime = container.getSlot(7).getStack().getCount();
-		//Caculate Percentages
-		if(fuelMax != 0) {
-			fuelLeft = (int)(fuel/(double)fuelMax * 14);
-		}
-		if(totalCookTime != 0) {
-			amountCooked = (int)(progress/(double)totalCookTime * 14);
-		}
 		
-		drawTexturedModalRect(x + 57 - (14-fuelLeft), y + 37, 176, 0 - (14-fuelLeft), 14, 14);
-		//System.out.println(fuelLeft);
+		//Test Output
+		//System.out.println("Fuel:" + fuel);
+		//System.out.println("Fuel Max:" + fuelMax);
+		//System.out.println("Progress:" + progress);
+		//System.out.println("Total Cook Time:" + totalCookTime);
+		
+		//Calculate Fill For GUI
+		int progresscooking;
+		if(totalCookTime != 0) {
+		progresscooking = (int)((progress*24)/totalCookTime);
+		}else {
+			progresscooking = 0;
+		}
+		int progressfire;
+		if(fuelMax != 0) {
+			progressfire= (int)(fuel*14/fuelMax) + 1;
+		}else
+		{
+			progressfire = 0;
+		}
+		//drawTexturedModalRect(x + 57 - (14-fuelLeft), y + 37, 176, 0 - (14-fuelLeft), 14, 14);
 		//Progress
+		drawTexturedModalRect(x + 57, y + 37 + (14 - progressfire), 176, 14 - progressfire, 14 , progressfire);
+		drawTexturedModalRect(x+79,y+35,176,14,progresscooking,17);
 		
 	}
 	

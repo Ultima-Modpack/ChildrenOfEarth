@@ -27,7 +27,6 @@ public class RegisterCampfireRecipe {
 		ChildrenOfEarthAPI.addCampfireRecipe(new ItemStack(Item.getByNameOrId("minecraft:chicken")), new ItemStack(Item.getByNameOrId("minecraft:cooked_chicken")));
 		ChildrenOfEarthAPI.addCampfireRecipe(new ItemStack(Item.getByNameOrId("minecraft:rabbit")), new ItemStack(Item.getByNameOrId("minecraft:cooked_rabbit")));
 		ChildrenOfEarthAPI.addCampfireRecipe(new ItemStack(Item.getByNameOrId("minecraft:mutton")), new ItemStack(Item.getByNameOrId("minecraft:cooked_mutton")));
-		
 		//Torches
 		ChildrenOfEarthAPI.addCampfireRecipe(new ItemStack(Item.getByNameOrId("minecraft:stick")), new ItemStack(Item.getByNameOrId("minecraft:torch")), 2);
 	}

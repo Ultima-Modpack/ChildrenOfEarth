@@ -49,6 +49,39 @@ public class CampfireContainer extends Container {
 			}
 		});
 		
+		//Fuel
+		addSlotToContainer(new SlotItemHandler(inventory, 4, 1000, 1000) {
+			@Override
+			public void onSlotChanged() {
+				campfire.markDirty();
+			}
+		});
+		
+		//FuelMax
+		addSlotToContainer(new SlotItemHandler(inventory, 5, 1000, 1000) {
+			@Override
+			public void onSlotChanged() {
+				campfire.markDirty();
+			}
+		});
+		
+		//Progress
+		addSlotToContainer(new SlotItemHandler(inventory, 6, 1000, 1000) {
+			@Override
+			public void onSlotChanged() {
+				campfire.markDirty();
+			}
+		});
+		
+		//TotalCookTime
+		addSlotToContainer(new SlotItemHandler(inventory, 7, 1000, 1000) {
+			@Override
+			public void onSlotChanged() {
+				campfire.markDirty();
+			}
+		});
+		
+
 		// Player's inventory
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 9; j++) {
